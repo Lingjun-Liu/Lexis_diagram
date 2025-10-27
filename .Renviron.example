@@ -1,0 +1,6 @@
+# 將本文件複製為 .Renviron（位於項目根目錄或用戶主目錄）
+# 並填入您在 HMD（mortality.org）註冊後獲得的賬號密碼。
+# 注意：.Renviron 不應提交至版本庫。
+
+HMD_USERNAME=
+HMD_PASSWORD=

@@ -24,24 +24,23 @@ showtext.auto()   # 激活showtext功能，允许使用系统字体
 # 安装并加载HMDHFDplus包
 
 
-# HMD数据库凭证（需要在"mortality.org"注册获取）
-username = "lingjunl@126.com"
-password = "66136613Llj!"
+# HMD数据库凭证（从环境变量读取；请在 .Renviron 中设置 HMD_USERNAME/HMD_PASSWORD）
+hmd_user <- Sys.getenv("HMD_USERNAME", unset = NA)
+hmd_pass <- Sys.getenv("HMD_PASSWORD", unset = NA)
+if (is.na(hmd_user) || is.na(hmd_pass) || hmd_user == "" || hmd_pass == "") {
+  stop("未检测到HMD凭证。请在项目根目录创建 .Renviron（或使用用户级 ~/.Renviron），设置 HMD_USERNAME 和 HMD_PASSWORD。参见 README。")
+}
 
 # 步骤1：从人类死亡率数据库下载英格兰和威尔士的死亡率数据
 # country = "GBRTENW" 表示英国的英格兰和威尔士地区
 # item = "Mx_1x1" 表示需要1岁年龄间隔、1年时间间隔的死亡率数据
 # mx表示死亡率(mortality rate)
-# 尝试下载数据
-enwamx <- readHMDweb(CNTRY = "GBRTENW", item = "Mx", 
-                     username = "lingjunl@126.com", password = "66136613Llj!")
+enwamx <- readHMDweb(CNTRY = "GBRTENW", item = "Mx_1x1",
+                     username = hmd_user, password = hmd_pass)
 
 # 步骤2：重塑数据格式，将宽格式转为长格式
 # 原始数据中Female和Male是两个独立的列
 # 转换后Sex成为一个变量列，mx(死亡率)成为对应的值列
-# 尝试下载具体格式的死亡率数据（1年年龄组，1年时间段）
-enwamx <- readHMDweb(CNTRY = "GBRTENW", item = "Mx_1x1", 
-                     username = "lingjunl@126.com", password = "66136613Llj!")
 
 # 整理数据格式以匹配原代码预期
 enwamx <- enwamx %>%

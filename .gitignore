@@ -1,0 +1,12 @@
+# Ignore local R environment credentials
+.Renviron
+
+# Common R artifacts
+.Rhistory
+.Rproj.user/
+.RData
+
+# OS/Editor
+.DS_Store
+.idea/
+.vscode/
