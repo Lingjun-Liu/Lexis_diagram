@@ -30,6 +30,7 @@ Lexis Diagram 由德国人口学家 **Wilhelm Lexis（1837–1914）** 提出，
 
 ## 三、我的个人实践
 
-
+我主要是学习了如何在R中绘制Lexis Surface Diagram，参考文献[Visualizing compositional data on the Lexis surface](https://www.demographic-research.org/articles/volume/36/21/),便于中文读者阅读我对这篇文章进行了翻译（[翻译版]()）那么关于Lexis Surface Diagram和Lexis Diagram的关系和区别在这篇文章中也有说明。
+这个网页上其实已经提供了复现代码，但是我在
 
 ---
